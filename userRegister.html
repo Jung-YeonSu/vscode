@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>잡집사</title>
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="login-header">
+      <div class="inner">
+        <h1>
+          <a href="/"><img src="/images/logo.svg" alt="잡집사 로고" /></a>
+        </h1>
+        <ul class="header-right">
+          <li><a href="/">홈</a></li>
+          <li><img src="/images/icon/space-bar.png" alt="|" /></li>
+          <li><a href="userLogin.html">로그인</a></li>
+          <li><img src="/images/icon/space-bar.png" alt="|" /></li>
+          <li><a href="userRegister.html">회원가입</a></li>
+        </ul>
+      </div>
+    </header>
+    <main class="login-form register-form">
+      <div class="inner">
+        <a class="back-btn" href="/"><img src="/images/icon/back-btn.png" alt="뒤로가기"> 취소하고 돌아가기</a>
+        <h2><span>개인회원</span> 회원가입</h2>
+        <form action="" method="post">
+          <div class="form-inner">
+            <ul>
+              <li>
+                <p>아이디</p>
+                <input type="text" name="user_id" placeholder="아이디">
+              </li>
+              <li>
+                <div class="registe-flex">
+                  <div>
+                    <p>비밀번호</p>
+                    <input type="text" name="user_pw" placeholder="비밀번호">
+                  </div>
+                  <div>
+                    <p>비밀번호 확인</p>
+                    <input type="text" name="user_duppw" placeholder="비밀번호">
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="registe-flex">
+                  <div>
+                    <p>기본 정보</p>
+                    <input type="text" name="user_name" placeholder="이름">
+                    <input type="text" name="user_regdate" placeholder="생년월일">
+                    <input type="text" name="user_gender" placeholder="성별">
+                  </div>
+                  <div>
+                    <p>연락처 정보</p>
+                    <input type="text" name="user_tel" placeholder="휴대폰">
+                    <input type="text" name="user_email" placeholder="이메일">
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <button class="login-btn registe-btn">가입하기</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
