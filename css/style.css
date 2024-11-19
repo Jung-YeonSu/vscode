@@ -47,6 +47,16 @@ header{
       }
     }
 
+    & .user-nav{
+      display: flex;
+      gap: 40px;
+      font-weight: 700;
+
+      & li{
+        white-space: nowrap;
+      }
+    }
+
     & .header-nav{
       display: flex;
       align-items: center;
@@ -141,7 +151,63 @@ header{
     display: flex;
     align-items: center;
     gap: 12px;
+    
+    & .bedge{
+    	margin-right : 12px;
+    	padding : 4px 8px;
+    	border-radius: 50px;
+    	background: #18A0FB;
+    	color: #fff;
+    	font-size: 14px;
+    	font-weight: 500;
+    }
+    
+    & .role-company{
+     background: var(--main-color);
+    }
   }
+}
+
+/* header 로그인 메뉴 */
+
+.logined{
+	align-items: center;
+	
+	& li{
+	cursor : pointer;
+	
+		& img{
+			display:block
+		}
+	}
+}
+
+.user{
+	background: url("/images/icon/user-dropdown.png") no-repeat right center;
+	padding-right : 24px;
+	position : relative;
+	margin-left : 12px;
+	
+	& .submenu{
+		display : none;
+		position : absolute;
+		right : 0;
+		transform : translateY(6px);
+		background: #fff;
+		border : solid 1px #D7DCE5;
+		padding : 12px;
+		border-radius : 12px;
+
+		& li{
+			padding : 4px 12px 0;
+			white-space: nowrap;
+			cursor: pointer;
+		}
+		
+		& li:hover{
+			background: #D7DCE5;
+		}
+	}
 }
 
 .login-header{
@@ -152,12 +218,24 @@ header{
   }
 }
 
+.home-btn{
+  width: 80px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  border: solid 1px #767676;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 /* footer */
 footer{
   border-top: solid 1px #EBECF1;
   padding: 20px 0 40px;
   margin-top: 80px;
   font-size: 14px;
+  color : #767676;
 
   & .footer-top{
     display: flex;
@@ -190,6 +268,7 @@ footer{
     font-weight: 500;
   }
 }
+
 
 /* home */
 .home{
@@ -392,7 +471,7 @@ footer{
         margin: 0 0 8px 4px;
       }
 
-      & input{
+      & input,select{
         width: 100%;
         height: 60px;
         border: solid 1px #D7DCE5;
@@ -401,6 +480,12 @@ footer{
         font-weight: 500;
         font-family: "Pretendard";
       }
+      
+      & select{
+       -webkit-appearance:none; /* for chrome */
+		   -moz-appearance:none; /*for firefox*/
+		   appearance:none;
+		   background: url("/images/icon/user-dropdown.png") no-repeat right 16px center ;}
     }
   }
 
@@ -414,6 +499,8 @@ footer{
     color: #fff;
     border-radius: 8px;
     margin-bottom: 40px;
+    cursor: pointer;
+    font-size: 16px
 
   }
 
@@ -496,10 +583,6 @@ footer{
         & input{
           margin-bottom: 8px;
         }
-
-        & input:last-of-type{
-          margin-bottom: 0;
-        }
       }
     }
 
@@ -510,5 +593,111 @@ footer{
       text-align: center;
 
     }
+  }
+}
+
+.id-dup{
+	padding-top : 8px;
+	display: block
+}
+
+
+
+/* 유저 마이페이지 홈*/
+.mypage-home{
+  & .inner{
+    padding: 0 60px;
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    & aside{
+      & .user-img{
+        width: 150px;
+        height: 150px;
+        background: #ccc;
+        border-radius: 75px;
+        margin-bottom: 40px;
+      }
+  
+      & .user-menu{
+        border-top: solid 1px #ccc;
+  
+        & li{
+          margin: 24px 0;
+          font-weight: 500;
+        }
+      }
+    }  
+
+    & .user-container{
+      width: 100%;
+      & h2{
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      & .user-info{
+        margin-bottom: 40px;
+
+        & li{
+          display: flex;
+          margin-bottom: 10px;
+          align-items: center;
+          gap: 8px;
+        }
+      }
+
+      & h3{
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      & .user-apply{
+        display: flex;
+        align-items: center;
+        border: solid 1px #333;
+        border-radius: 8px;
+        margin-top: 20px;
+
+        & li{
+          width: 25%;
+          padding: 30px 24px;
+          text-align: center;
+          position: relative;
+     
+          & a{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 500;
+            & p:last-child{
+              font-size: 22px;
+
+            }
+          }
+        }
+
+        & li::after{
+          content: "";
+          background: #ccc;
+          position: absolute;
+          display: block;
+          width: 1px;
+          height: 40px;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+
+
+
+
+
+
   }
 }
