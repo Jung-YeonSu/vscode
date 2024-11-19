@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>잡집사</title>
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/headerSubmenu.js" defer></script>
+  </head>
+  <body>
+    <header class="login-header">
+      <div class="inner">
+        <div class="header-left">
+          <h1>
+            <a href="/"><img src="/images/logo.svg" alt="잡집사 로고" /></a>
+          </h1>
+          <ul class="user-nav">
+            <li><a href="userMypageHome.html">마이홈</a></li>
+            <li><a href="#">이력서</a></li>
+            <li><a href="#">스크랩</a></li>
+            <li><a href="#">지원자관리</a></li>
+            <li><a href="#">메시지</a></li>
+          </ul>
+        </div>
+        <ul class="header-right logined">
+          <li class="user">
+            <span class="bedge">개인</span>홍길동
+            <ul class="submenu">
+              <li><a href="#">마이페이지</a></li>
+              <li><a href="#">회원정보수정</a></li>
+              <li><a href="/Company/Logout">로그아웃</a></li>
+            </ul>
+          </li>
+          <li class="home-btn">잡집사 홈</li>
+        </ul>
+      </div>
+    </header>
+    <main class="mypage-update">
+      <div class="inner">
+        <div class="aside">
+          <h2>계정 정보 설정</h2>
+          <div class="user-img"></div>
+          <input type="file" id="upfile" name="upfile" aria-label="upfile" accept=".jps,.jpeg,.png">
+          <label class="profile-btn" for="upfile">프로필 변경</label>
+        </div>
+        <div class="update-container">
+          <form action="">
+            <p>기본정보</p>
+            <table>
+              <tbody>
+                <tr>
+                  <td>이름</td>
+                  <td><input type="text" name="user_name" value="홍길동"></td>
+                </tr>
+                <tr>
+                  <td>생년월일</td>
+                  <td><input type="text" name="user_name" value="20240728"></td>
+                </tr>
+                <tr>
+                  <td>성별</td>
+                  <td><select name="user_gender">
+                    <option>남</option>
+                    <option>여</option>
+                  </select></td>
+                </tr>
+              </tbody>
+            </table>
+            <p>연락처 정보</p>
+            <table>
+              <tbody>
+                <tr>
+                  <td>휴대폰</td>
+                  <td><input type="text" name="user_name" value="01012341234"></td>
+                </tr>
+                <tr>
+                  <td>이메일</td>
+                  <td><input type="email" name="user_name" value="20240728"></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="btn-container">
+              <a href="javascript:window.history.back();">취소</a>
+              <button class="update-btn">수정</button>
+            </p>
+          </form>
+        </div>
+      </div>
+    </main>
+    <script></script>
+  </body>
+</html>
