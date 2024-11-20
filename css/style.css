@@ -1175,6 +1175,7 @@ footer {
                   width: 100%;
                   overflow: hidden;
                   padding: 12px;
+                  font-family: "Pretendard";
                 }
 
                 & textarea:focus {

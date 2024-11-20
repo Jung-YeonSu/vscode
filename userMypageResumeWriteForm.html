@@ -86,7 +86,7 @@
               <ul class="resume-details">
                 <li>
                   <p>직무</p>
-                  <select class="write-input" name="" id="" required>
+                  <select class="write-input" name="duty_idx" required>
                     <option style="display: none;" value="">직무를 선택해주세요.</option>
                     <option>집 좀 보내주소</option>
                   </select>
@@ -136,14 +136,14 @@
                   <p class="punder">경력(업무경험)</p>
                   <div class="career-inner">
                     <div class="date-input">
-                      <input type="text" name="" maxlength="6" placeholder="YYYYMM" required>
+                      <input type="text" name="career_startdate" maxlength="6" placeholder="YYYYMM" disabled>
                       <span>~</span>
-                      <input type="text" name="" maxlength="6" placeholder="YYYYMM" required>
+                      <input type="text" name="career_enddate" maxlength="6" placeholder="YYYYMM" disabled>
                     </div>
                     <span><img src="/images/icon/space-bar.png" alt=""></span>
                     <div class="career-info">
-                      <input type="text" placeholder="회사명을 입력해주세요." required>
-                      <textarea placeholder="주요업무 및 성과를 입력해주세요." oninput="handleResizeHeight(this)" required></textarea>
+                      <input type="text" placeholder="회사명을 입력해주세요." required disabled>
+                      <textarea placeholder="주요업무 및 성과를 입력해주세요." oninput="handleResizeHeight(this)" disabled></textarea>
                     </div>
                   </div>
                 </li>
@@ -154,7 +154,7 @@
                     placeholder="자기소개서 제목을 입력해주세요"
                     required
                   />
-                  <textarea placeholder="내용을 입력해주세요." oninput="handleResizeHeight(this)" rows="4" required></textarea>
+                  <textarea placeholder="내용을 입력해주세요." oninput="handleResizeHeight(this)" rows="4"></textarea>
                 </li>
               </ul>
             </div>
@@ -230,13 +230,33 @@
       const $careerBtn = document.querySelector(".user-util h3 select")
       $careerBtn.addEventListener("change",(e)=>{
         const $careerLi = document.querySelector(".career-li")
-        console.log(e.target.value)
+        const $careerInput = document.querySelectorAll(".career-li input, .career-li textarea ")
+        console.log($careerInput)
         if(e.target.value == "신입"){
           $careerLi.style.display = "none"
+          $careerInput.forEach(input=>{
+            input.disabled = true;
+          })
         }else{
           $careerLi.style.display = "block"
+          $careerInput.forEach(input=>{
+            input.disabled = false;
+            input.required = true;
+          })
         }
-        console.log(1)
+      })
+
+      const $form = document.querySelector("form");
+      $form.addEventListener("submit",(e)=>{
+        e.preventDefault();
+        stackNameArr.forEach((stack)=>{
+          let stackInput = document.createElement("input")
+          stackInput.type  = "hidden";
+          stackInput.name  = "skill_idx";
+          stackInput.value = stack
+          $form.append(stackInput);
+        })
+        $form.submit()
       })
     </script>
   </body>
