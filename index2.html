@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li{list-style: none;}
+    .stack-list{
+      overflow-y: auto;
+    }
+
+    .stack-list>li{
+      width: 150px;
+      background: #ccc;
+      height: 60px;
+      line-height: 60px;
+      position: relative;
+    }
+
+    .sub{
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <div class="output">
+    <ul class="stack-list">
+    </ul>
+    <ul class="select-skack">
+    </ul>
+  </div>
+
+
+  <script>
+
+    const data1 = [1,2,3,4]
+    const data2 = {1:[1,2,3,4,5,6,7,8],2:[1,2,3,4,5,6,7,8],3:[1,2,3,4,5,6,7,8],4:[1,2,3,4,5,6,7,8]}
+    const stackList = document.querySelector(".stack-list")
+    console.log(data2)
+    
+    data1.forEach((a,i)=>{
+      let li = document.createElement("li")
+      li.innerHTML = a + "<ul class='sub'></ul>";
+      stackList.append(li);
+    })
+    
+    let subLi = document.querySelectorAll(".sub");
+    
+    console.log(subLi)
+    
+    Object.values(data2).forEach((a,i)=>{
+      a.forEach((item,index)=>{
+        let li = document.createElement("li")
+        li.innerHTML = item + "<ul class='sub'></ul>";
+        subLi[i].append(li);
+      })
+    })
+    
+    const stackLi  = document.querySelectorAll(".stack-list>li")
+    stackLi.forEach((a,i)=>{
+      a.addEventListener("click",()=>{
+        subLi.forEach((li)=>{
+          li.style.display = "none"
+        })
+        subLi[i].style.display = "block"
+      })
+    })
+
+
+  </script>
+</body>
+</html>
