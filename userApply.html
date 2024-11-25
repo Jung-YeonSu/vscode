@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>잡집사</title>
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/headerSubmenu.js" defer></script>
+  </head>
+  <body>
+    <header class="login-header">
+      <div class="inner">
+        <div class="header-left">
+          <h1>
+            <a href="/"><img src="/images/logo.svg" alt="잡집사 로고" /></a>
+          </h1>
+          <ul class="user-nav">
+            <li><a href="userMypageHome.html">마이홈</a></li>
+            <li><a href="#">이력서</a></li>
+            <li><a href="#">스크랩</a></li>
+            <li><a href="#">지원자관리</a></li>
+            <li><a href="#">메시지</a></li>
+          </ul>
+        </div>
+        <ul class="header-right logined">
+          <li class="user">
+            <span class="bedge">개인</span>홍길동
+            <ul class="submenu">
+              <li><a href="#">마이페이지</a></li>
+              <li><a href="#">회원정보수정</a></li>
+              <li><a href="/Company/Logout">로그아웃</a></li>
+            </ul>
+          </li>
+          <li class="home-btn">잡집사 홈</li>
+        </ul>
+      </div>
+    </header>
+    <main class="write-form apply-form">
+      <div class="inner">
+        <aside>
+          <ul class="aside-inner">
+            <li>
+              <h3>지원내역</h3>
+              <button class="applyall-btn">전체 지원내역</button>
+            </li>
+            <li>
+              <img src="/images/icon/resume-dropdown.png" alt="" />등록한 이력서
+            </li>
+            <li class="apply-resume-list">
+              <p class="selected">
+                <a href="#">
+                  <img src="/images/icon/active-resume-li.png" alt="" />dasdad
+                </a>
+              </p>
+              <p>
+                <a href="#">
+                  <img src="/images/icon/active-resume-li.png" alt="" />dasdad
+                </a>
+              </p>
+            </li>
+          </ul>
+        </aside>
+        <div class="resume-container apply-container">
+          <div class="resume-conten apply-content">
+            <div class="apply-status">
+              <ul>
+                <li>지원완료(0)</li>
+                <li>서류통과(0)</li>
+                <li>최종합격(0)</li>
+                <li>불합격(0)</li>
+              </ul>
+            </div>
+            <div class="apply-list">
+              <table>
+                <colgroup>
+                  <col width="25%" />
+                  <col width="55%" />
+                  <col width="20%" />
+                </colgroup>
+                <thead>
+                  <tr>
+                    <td>지원정보</td>
+                    <td colspan="2">지원공고</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="apply-date">2024.10.10 지원</td>
+                    <td class="apply-recruit">
+                      <a href="#">나에게도 꿈이 있었습니다.</a>
+                    </td>
+                    <td><a class="apply-cancle-btn" href="#">지원취소</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
