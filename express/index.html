@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scraped Data</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h1>Scraped Product Data</h1>
+  <button id="fetchData">Fetch Data</button>
+  <div id="results"></div>
+
+  <script>
+    document.getElementById('fetchData').addEventListener('click', async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/scrape');
+        const { parsedProducts } = response.data;
+
+        let resultsHtml = '<h2>Products:</h2><ul>';
+          parsedProducts.forEach((item, index) => {
+          resultsHtml += `<li>${JSON.stringify(item)}</li>`;
+        });
+        resultsHtml += '</ul>';
+
+        document.getElementById('results').innerHTML = resultsHtml;
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    });
+  </script>
+</body>
+</html>
