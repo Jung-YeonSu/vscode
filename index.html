@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <script src="/js/searchHistory.js" defer></script>
+    <script src="/js/mainCarousel.js" defer></script>
+    <style>
+      header {
+        border-bottom: solid 1px #ebecf1;
+      }
+
+      .header__inner {
+        display: flex;
+        gap: 30px;
+      }
+
+      .header__category-btn {
+        text-align: center;
+        width: 132px;
+        height: 132px;
+        aspect-ratio: 1;
+        background: #ccc;
+        position: relative;
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-weight: 500;
+        color: #fff;
+      }
+
+      .header__category-2depth {
+        display: none;
+        color: #333;
+        width: 100%;
+        text-align: left;
+        line-height: 1.3;
+        position: absolute;
+        z-index: 3;
+        bottom: 0;
+        transform: translateY(100%);
+
+        & li {
+          padding: 10px;
+          background: #eee;
+          position: relative;
+        }
+      }
+
+      .header__category-btn:hover .header__category-2depth {
+        display: block;
+      }
+
+      .header__category-2depth li:hover > .header__category-3depth {
+        display: block;
+      }
+
+      .header__category-3depth {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translateX(100%);
+        width: 100%;
+      }
+
+      .header__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        width: 100%;
+        padding: 20px 0;
+      }
+
+      .logo-searchbar {
+        display: flex;
+        gap: 20px;
+        height: 50px;
+        line-height: 50px;
+        margin-bottom: 20px;
+
+        & h1 {
+          width: 168px;
+          background: #ccc;
+          text-align: center;
+        }
+
+        & div {
+          width: 573px;
+          background: #ccc;
+          text-align: center;
+        }
+      }
+
+      .header__gnb {
+        display: flex;
+        gap: 18px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .header-nav {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        gap: 24px;
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .search-div {
+        width: 100%;
+        height: 100%;
+        background: url(/images/icon/search.png) no-repeat right 30px center;
+        border: solid 1px var(--main-color);
+        border-radius: 4px;
+        transition: width 0.4s;
+
+        & input {
+          width: 100%;
+          height: 100%;
+          font-size: 18px;
+          padding: 0 100px 0 30px;
+          border-radius: 4px;
+          border: none;
+          background: none;
+          font-family: "Pretendard";
+        }
+        & .recent-list {
+          display: none;
+        }
+      }
+
+      .search-div.recent {
+        line-height: 1.3;
+        border-radius: 16px 16px 0 0;
+        border: solid 1px #d7dce5;
+        font-size: 14px;
+        position: relative;
+        & .recent-list {
+          display: block;
+          width: 573px;
+          padding: 20px 30px;
+          top: 48px;
+          border: solid 1px #d7dce5;
+          border-radius: 0 0 16px 16px;
+          background: #fff;
+          position: absolute;
+          z-index: 4;
+          left: -1px;
+          transition: width 0.4s;
+
+          & p {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-weight: 700;
+
+            & button {
+              font-size: 12px;
+              color: #767676;
+              background: none;
+              border: none;
+              cursor: pointer;
+            }
+          }
+          & ul {
+            & li {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              font-weight: 300;
+              margin-bottom: 8px;
+              overflow: hidden;
+
+              & a {
+                overflow: hidden;
+              }
+
+              & .recent-remove {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+
+      .header__utill {
+        display: flex;
+        gap: 40px;
+
+        & > li {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+        }
+      }
+
+      .header__utill-login-btn {
+        position: relative;
+
+        & ul {
+          display: none;
+          position: absolute;
+          z-index: 3;
+          right: 0;
+          bottom:0;
+          transform: translateY(100%);
+          background: #fff;
+          border: solid 1px #ccc;
+          white-space: nowrap;
+          text-align: left;
+
+          & li {
+            text-align: left;
+            padding: 6px 12px;
+            border-bottom: solid 1px #ccc;
+          }
+        }
+      }
+
+      .header__utill-login-btn:hover ul {
+        display: block;
+      }
+
+      .home {
+        overflow: hidden;
+      }
+
+      .home__main-carousel {
+        width: 100%;
+        height: 400px;
+        position: relative;
+
+        & .dim{
+          position: absolute;
+          width: 100%;
+          height: 400px;
+          right: 0;
+          transform: translateX(-100%);
+          background: rgba(0, 0, 0, 0.4);
+          z-index: 3;
+          top: 0;
+        }
+
+        & .dim-left{
+          left: 0;
+          transform: translateX(100%);
+        }
+      }
+
+      .carousel-container {
+        display: flex;
+        transform: translateX(100%);
+        height: 100%;
+        /*transition: transform 0.5s ease-in-out;*/
+      }
+
+      .carousel-slide {
+        width: 1200px;
+        flex-shrink: 0;
+        background: #ccc;
+      }
+
+      .carousel-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background: none;
+      }
+
+      .home__main-carousel .prev {
+        left: 20px;
+      }
+
+      .home__main-carousel .next {
+        right: 20px;
+      }
+
+      .carousel-count {
+        position: absolute;
+        display: flex;
+        gap: 6px;
+        bottom: 20px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        padding: 8px 20px;
+        align-items: center;
+        justify-content: center;
+        right: 20px;
+        border-radius: 30px;
+        font-size: 16px;
+
+        & span {
+          width: 12px;
+          text-align: center;
+        }
+      }
+
+      .home h2 {
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 60px;
+      }
+
+      .brand-carousel-title {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        & ul {
+          display: flex;
+          gap: 8px;
+        }
+      }
+
+      .brand-carousel {
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .brand-carousel-container {
+        display: flex;
+
+        & li {
+          width: calc(100% / 8);
+          text-align: center;
+          height: 80px;
+          line-height: 80px;
+          background: #ccc;
+          flex-shrink: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="inner header__inner">
+        <ul>
+          <li class="header__category-btn">
+            <img
+              src="/images/icon/header-icon/category-btn.png"
+              alt="카테고리 버튼"
+            />
+            카테고리
+            <ul class="header__category-2depth">
+              <li><a href="#">PC</a></li>
+              <li><a href="#">노트북</a></li>
+              <li>
+                주요부품
+                <ul class="header__category-3depth">
+                  <li><a href="#">CPU</a></li>
+                  <li><a href="#">메인보드</a></li>
+                  <li><a href="#">메모리</a></li>
+                </ul>
+              </li>
+              <li>주변기기</li>
+            </ul>
+          </li>
+        </ul>
+        <div class="header__content">
+          <div class="header__logo-gnb-contaienr">
+            <div class="logo-searchbar">
+              <h1><a href="#">로고</a></h1>
+              <div class="header-nav">
+                <div class="search-div">
+                  <input
+                    type="text"
+                    name="search"
+                    placeholder="검색어를 입력해주세요."
+                    autocomplete="off"
+                  />
+                  <div class="recent-list">
+                    <p>
+                      <span>최근 검색</span
+                      ><button
+                        class="recnet-remove-all"
+                        onclick="removeRecentAll()"
+                      >
+                        전체삭제
+                      </button>
+                    </p>
+                    <ul></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ul class="header__gnb">
+              <li>간편검색</li>
+              <li>PC견적</li>
+              <li>브랜드관</li>
+              <li>커뮤니티</li>
+              <li>고객센터</li>
+            </ul>
+          </div>
+          <ul class="header__utill">
+            <li>
+              <img src="images/icon/header-icon/icon-btn.png" alt="관심제품" />
+              관심
+            </li>
+            <li class="header__utill-login-btn">
+              <img src="images/icon/header-icon/icon-btn.png" alt="로그인" />
+              <a href="#">로그인</a>
+              <ul>
+                <li><a href="#">로그인</a></li>
+                <li><a href="#">회원가입</a></li>
+                <li><a href="#">마이페이지</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main class="home">
+      <div class="inner">
+        <div class="home__main-carousel">
+          <div class="dim-left dim"></div>
+          <div class="dim-right dim"></div>
+          <div class="carousel-container">
+            <div class="carousel-slide">
+              <div>aa</div>
+            </div>
+            <div class="carousel-slide">
+              <div>bb</div>
+            </div>
+            <div class="carousel-slide">
+              <div>cc</div>
+            </div>
+            <div class="carousel-slide">
+              <div>dd</div>
+            </div>
+          </div>
+          <button class="carousel-button prev">
+            <img
+              src="/images/icon/home-icon/main-carousel-left-btn.png"
+              alt="메인캐러셀 prev"
+            />
+          </button>
+          <button class="carousel-button next">
+            <img
+              src="/images/icon/home-icon/main-carousel-right-btn.png"
+              alt="메인캐러셀 next"
+            />
+          </button>
+          <p class="carousel-count">
+            <span class="nowpage">1</span><span>/</span
+            ><span class="slide-length"></span>
+          </p>
+        </div>
+        <h2 class="brand-carousel-title">
+          브랜드관
+          <ul>
+            <li class="brand-prev-btn">
+              <img
+                src="/images/icon/home-icon/brand-carousel-left.png"
+                alt=""
+              />
+            </li>
+            <li class="brand-next-btn">
+              <img
+                src="/images/icon/home-icon/brand-carousel-right-active.png"
+                alt=""
+              />
+            </li>
+          </ul>
+        </h2>
+        <div class="brand-carousel">
+          <ul class="brand-carousel-container">
+            <li>MSI1</li>
+            <li>MSI2</li>
+            <li>MSI3</li>
+            <li>MSI4</li>
+            <li>MSI5</li>
+            <li>MSI6</li>
+            <li>MSI7</li>
+            <li>MSI8</li>
+            <li>MSI9</li>
+            <li>MSI10</li>
+          </ul>
+        </div>
+        <h2>지금 가장 인기 있는 상품</h2>
+      </div>
+    </main>
+    <script>
+      let brandCarouselIdx = 0;
+
+      const $brandCarouselContainer = document.querySelector(
+        ".brand-carousel-container"
+      );
+      const $brandCarouselSlide =
+        $brandCarouselContainer.querySelectorAll("li");
+      const $brandPrevBtn = document.querySelector(".brand-prev-btn img");
+      const $brandNextBtn = document.querySelector(".brand-next-btn img");
+
+      $brandPrevBtn.addEventListener("click", () => {
+        if (brandCarouselIdx >= 1) {
+          $brandPrevBtn.src =
+            "/images/icon/home-icon/brand-carousel-left-active.png";
+          brandCarouselBtnClick(-1);
+        }
+        if (brandCarouselIdx == 0) {
+          $brandPrevBtn.src = "/images/icon/home-icon/brand-carousel-left.png";
+        }
+        if (brandCarouselIdx != $brandCarouselSlide.length - 8){
+          $brandNextBtn.src = "/images/icon/home-icon/brand-carousel-right-active.png";
+        }
+      });
+
+      $brandNextBtn.addEventListener("click", () => {
+        if (brandCarouselIdx < $brandCarouselSlide.length - 8) {
+          brandCarouselBtnClick(1);
+          if (brandCarouselIdx >= 1) {
+            $brandPrevBtn.src =
+              "/images/icon/home-icon/brand-carousel-left-active.png";
+          }
+        }
+
+        if (brandCarouselIdx == $brandCarouselSlide.length - 8) {
+          $brandNextBtn.src = "/images/icon/home-icon/brand-carousel-right.png";
+        }
+      });
+
+      function brandCarouselBtnClick(direct) {
+        brandCarouselIdx += direct;
+        $brandCarouselContainer.style.transform = `translateX(-${
+          $brandCarouselSlide[0].clientWidth * brandCarouselIdx
+        }px)`;
+      }
+    </script>
+  </body>
+</html>
